@@ -7,7 +7,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -47,26 +50,39 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Column() //Column-Row - Box: Use box when you want to set text above Image
     {
-        Text(
-            text = "Hello $name!",
-            modifier = Modifier.background(color = Color.DarkGray)
-                .padding(top = 10.dp, start = 1.dp,end = 1.dp,bottom = 30.dp)//Set distance between text and the background border
-                .clickable {//Trigger something when you click inside the border of here
-                           println("Is clicked")
-                }
-            ,color = Color.Magenta,
-            fontSize = 25.sp,
-            fontWeight = FontWeight.Bold
-        )
-        Text(
-            text = "Hello World!",
-            modifier = Modifier.background(color = Color.DarkGray),
-            color = Color.Red,
-            fontSize = 25.sp,
-            fontWeight = FontWeight.Bold
-        )
+
+        CustomText(text = "Hello Android")
+        CustomText(text = "Halo World")
+        CustomText(text = "Lorem Ipsum")
     }
 
+}
+@Composable
+fun CustomText(text : String)
+{
+    Text(
+        text = text, //Reusable Text specifications
+
+        modifier = Modifier
+            .background(color = Color.DarkGray)
+            .padding(
+                top = 10.dp,
+                start = 1.dp,
+                end = 1.dp,
+                bottom = 30.dp
+            )//Set distance between text and the background border
+            .clickable {//Trigger something when you click inside the border of here
+                println("Is clicked")
+            }
+        //.width(250.dp) SET WIDTH OF THE BACKGROUND
+        //.height(200.dp) SET HEIGHT OF THE BACKGROUND
+        //.size(width = 30.dp, height =25.dp) EITHER SET BOTH WIDTH AND HEIGHT especially for Images
+        //.fillMaxSize(1f) Size -> Width-Height
+
+        ,color = Color.Magenta,
+        fontSize = 25.sp,
+        fontWeight = FontWeight.Bold
+    )
 }
 
 @Preview(showBackground = true)
